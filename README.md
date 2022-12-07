@@ -1,1 +1,1 @@
-# Studio-Ghibli-s-Movie-Maker
+# Studio-Ghiblis-Movie-Maker
