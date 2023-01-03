@@ -1,7 +1,7 @@
 # Studio-Ghiblis-Movie-Maker
 
 # ProjTemplate
-BScDevOps Assign - Team Marvel
+BScDevOps Assign - Team Free Pints
 
 # Table of Contents
 Preamble
@@ -31,18 +31,36 @@ Each team should fill in the blanks <<>> and add additional content that the tea
 Our product will be delivered using an Agile methodology that embraces the DevOps culture. Please note that our culture embraces change and these documents are treated as living, breathing artefacts that will be continuously updated.
 
 # Scrum Master
-<<list week number, student name>>
+Week 1 - 
+Week 2 - 
+Week 3 - 
+Week 4 - 
+Week 5 - 
+Week 6 - 
+Week 7 - 
+Week 8 - 
+Week 9 - 
+Week 10 - 
+Week 11 - 
+Week 12 - 
+Week 13 - 
+Week 14 - 
+Week 15 - 
 Rotating scrum master so that everyone gets to experience the role once.
 
 # Product Owner
 <<List name>> (Permanent)
 
 # Rockstars
-<<list team member names here>>
-
+Reg Gordon
+Denis Mota
+Caroline Santana
+Deepak John
+Eoin Morgan
+Ryan Clarke
 
 # Project Deadline
-Refer to BB for deadlines
+Thursday, 23 March 2023 23:59
 
 # Project Specification
 Clean and simple design
@@ -59,7 +77,7 @@ Regex for cleansing and validation of data before sending to the database.
 
 # Useful Links
  - Project Slack: https://atudevops.slack.com
- - GitHub: <<staff member's github repo for the student project>>
+ - GitHub: https://github.com/L00177774-reg/Studio-Ghiblis-Movie-Maker
 
 # More Information
 For more information visit our other sections
@@ -118,7 +136,7 @@ The code framework to be used will be <<>>, we will be programming using the IDE
     Use Agile methodoligies in the project at all times.
 
 # Meetings
-Stand-ups will occur on Every <<day/time>> during class and <<day/time>> using Automated bot. Two per week.
+Stand-ups will occur on Every Tuesday (19:00) during class and Thursday (18:00) using Automated bot. Two per week.
 The order that people give their updates will be << >>.
 Updates will be in the form: What I've done, Impediments, What I plan to do.
 Sprint planning will occur at <<date/time>> every week.
@@ -137,9 +155,9 @@ Be honest.
 
 # Communication
 Slack is the preferred method of communication.
-Communication in this order: <<Slack, Microsoft Teams, E-Mail>> *Note that if the lecturers can't see the communications we cannot grade it!
+Communication in this order: Slack, Teams, Email (CC Lecturer) *Note that if the lecturers can't see the communications we cannot grade it!
 If a demonstration is required use Zoom, record the session and upload to the Slack channel.
-No Slack communications between <<time and time>>.
+No Slack communications between 22:00 and 09:00.
 Raise a problem as soon as you see it.
 Respect each other and understand differences in knowledge.
 All team documents are to be created using Markdown language and shared on GitHub.
