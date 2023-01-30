@@ -1,9 +1,18 @@
+using Microsoft.EntityFrameworkCore;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+using StudioGhibliMovieMaker.BusinessObjects.Contexts;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 
+string? connectionString = builder.Configuration.GetConnectionString("MariaDBConnectionString");
+builder.Services.AddDbContextPool<StudentContext>(options => options
+    .UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
