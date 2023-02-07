@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using StudioGhibliMovieMaker.BusinessObjects.Contexts;
+using StudioGhibliMovieMaker.BusinessObjects.Models;
 
 namespace StudioGhibliMovieMaker.Pages
 {
@@ -14,7 +16,15 @@ namespace StudioGhibliMovieMaker.Pages
 
         public void OnGet()
         {
+            GetValues(1);
+        }
 
+        public StudentsDataModel? GetValues(int id)
+        {
+            StudentContext context = HttpContext.RequestServices.GetService(typeof(StudentContext)) as StudentContext;
+            StudentsDataModel test = context.Get(id).Result;
+
+            return test;
         }
     }
 }
