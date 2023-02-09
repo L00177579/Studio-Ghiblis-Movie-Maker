@@ -17,8 +17,8 @@ jobs:
     - name: Build the Docker image
       run: |
         echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "dock44den" --password-stdin
-        docker image build -t atuprojectstudioghiblis:latest .
-        docker push atuprojectstudioghiblis:latest
+        docker image build -t dock44den/atuprojectstudioghiblis:latest .
+        docker push dock44den/atuprojectstudioghiblis:latest
       
       
       
