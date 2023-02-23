@@ -1,15 +1,29 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:353691630264:task-definition/task-definition:12",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:353691630264:task-definition/task-definition:15",
     "containerDefinitions": [
         {
             "name": "build",
-            "image": "353691630264.dkr.ecr.us-east-1.amazonaws.com/repositoryecr:3887805e007838ebab6e8f58d0e546ebebac1fb8",
+            "image": "353691630264.dkr.ecr.us-east-1.amazonaws.com/repositoryecr:900d98d8fbb46101264f88d739338b385f9fcb2a",
             "cpu": 0,
             "portMappings": [
                 {
                     "name": "build-80-tcp",
                     "containerPort": 80,
                     "hostPort": 80,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                },
+                {
+                    "name": "build-8000-tcp",
+                    "containerPort": 8000,
+                    "hostPort": 8000,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                },
+                {
+                    "name": "build-3000-tcp",
+                    "containerPort": 3000,
+                    "hostPort": 3000,
                     "protocol": "tcp",
                     "appProtocol": "http"
                 }
@@ -32,7 +46,7 @@
     "family": "task-definition",
     "executionRoleArn": "arn:aws:iam::353691630264:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "revision": 12,
+    "revision": 15,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -75,7 +89,12 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2023-02-23T23:44:55.006Z",
+    "registeredAt": "2023-02-23T23:57:41.553Z",
     "registeredBy": "arn:aws:iam::353691630264:root",
-    "tags": []
+    "tags": [
+        {
+            "key": "name",
+            "value": "build"
+        }
+    ]
 }
