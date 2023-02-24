@@ -3,21 +3,21 @@ using StudioGhibliMovieMaker.BusinessObjects.Contexts;
 
 namespace StudioGhibliMovieMaker.BusinessObjects.Models.Contexts
 {
-    public class CourseContext : DbContext
+    public class UserContext : DbContext
     {
-        public virtual DbSet<CoursesDataModel> Courses { get; set; }
-        public CourseContext(DbContextOptions<CourseContext> options) : base(options)
+        public virtual DbSet<UsersDataModel> Users { get; set; }
+        public UserContext(DbContextOptions<UserContext> options) : base(options)
         {
 
         }
-        public async Task<bool> Insert(CoursesDataModel CourseInsert)
+        public async Task<bool> Insert(UsersDataModel UserInsert)
         {
-            if (CourseInsert.CourseId == null)
+            if (UserInsert == null)
             {
                 return false;
             }
 
-            var result = await this.Courses.AddAsync(CourseInsert);
+            var result = await this.Users.AddAsync(UserInsert);
             if (result != default)
             {
                 return true;
@@ -28,14 +28,14 @@ namespace StudioGhibliMovieMaker.BusinessObjects.Models.Contexts
             }
         }
 
-        public async Task<List<CoursesDataModel>> Get()
+        public async Task<List<UsersDataModel>> Get()
         {
-            return await this.Courses.ToListAsync();
+            return await this.Users.ToListAsync();
         }
 
-        public async Task<CoursesDataModel?> Get(int id)
+        public async Task<UsersDataModel?> Get(string id)
         {
-            var result = await this.Courses.FirstOrDefaultAsync(x => x.CourseId == id);
+            var result = await this.Users.FirstOrDefaultAsync(x => x.UserName == id);
 
             if (result != default)
             {
@@ -48,4 +48,3 @@ namespace StudioGhibliMovieMaker.BusinessObjects.Models.Contexts
         }
     }
 }
-

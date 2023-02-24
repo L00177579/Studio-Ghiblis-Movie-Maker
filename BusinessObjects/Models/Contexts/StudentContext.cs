@@ -12,7 +12,7 @@ namespace StudioGhibliMovieMaker.BusinessObjects.Contexts
         }
         public async Task<bool> Insert(StudentsDataModel StudentInsert)
         {
-            if (StudentInsert.StudentId != null)
+            if (StudentInsert.StudentId == null)
             {
                 return false;
             }
