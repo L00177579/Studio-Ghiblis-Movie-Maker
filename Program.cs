@@ -12,6 +12,14 @@ builder.Services.AddDbContextPool<StudentContext>(options => options
     .UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 builder.Services.AddDbContextPool<CourseContext>(options => options
     .UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+builder.Services.AddDbContextPool<UserContext>(options => options
+    .UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+builder.Services.AddAuthentication("SGMMCookie").AddCookie("SGMMCookie", options =>
+{
+    options.Cookie.Name = "SGMMCookie";
+    options.LoginPath = "/Login";
+    options.AccessDeniedPath = "/AccessDenied";
+});
 
 var app = builder.Build();
 
@@ -29,6 +37,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();

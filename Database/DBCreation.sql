@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS `courses` (
   `CourseName` text NOT NULL,
   `Running` tinyint(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`CourseId`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 -- Dumping structure for table studioghiblicourses.students
 CREATE TABLE IF NOT EXISTS `students` (
@@ -19,4 +19,12 @@ CREATE TABLE IF NOT EXISTS `students` (
   `Email` text NOT NULL,
   `Courses` text NOT NULL,
   PRIMARY KEY (`StudentId`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+-- Dumping structure for table studioghiblicourses.users
+CREATE TABLE IF NOT EXISTS `users` (
+  `UserName` NOT NULL,
+  `Password` text NOT NULL,
+  `Administrator` BOOL NOT NULL DEFAULT 0,
+  PRIMARY KEY (`UserName`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
