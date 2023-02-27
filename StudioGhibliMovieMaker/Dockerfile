@@ -17,6 +17,6 @@ FROM build AS publish
 RUN dotnet publish "StudioGhibliMovieMaker.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
-WORKDIR /app
+WORKDIR /app/StudioGhibliMovieMaker
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "StudioGhibliMovieMaker.dll", "/repositoryecr"]
