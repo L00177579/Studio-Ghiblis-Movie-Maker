@@ -10,13 +10,13 @@ WORKDIR /src
 COPY ["StudioGhibliMovieMaker.csproj", "."]
 RUN dotnet restore "./StudioGhibliMovieMaker.csproj"
 COPY . .
-WORKDIR "/src/."
+WORKDIR "/src/StudioGhibliMovieMaker"
 RUN dotnet build "StudioGhibliMovieMaker.csproj" -c Release -o /app/build
 
 FROM build AS publish
 RUN dotnet publish "StudioGhibliMovieMaker.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
-WORKDIR /app/StudioGhibliMovieMaker
+WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "StudioGhibliMovieMaker.dll", "/repositoryecr"]
