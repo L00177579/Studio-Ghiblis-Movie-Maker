@@ -6,11 +6,11 @@ EXPOSE 80
 EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /src
+WORKDIR .
 COPY ["StudioGhibliMovieMaker.csproj", "."]
 RUN dotnet restore "./StudioGhibliMovieMaker.csproj"
 COPY . .
-WORKDIR "/src/StudioGhibliMovieMaker"
+WORKDIR .
 RUN dotnet build "StudioGhibliMovieMaker.csproj" -c Release -o /app/build
 
 FROM build AS publish
