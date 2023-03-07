@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS `students` (
   `DateOfBirth` date NOT NULL,
   `Email` TEXT NOT NULL,
   `Courses` TEXT NOT NULL,
+  `NiceToHaveRequests` TEXT NOT NULL,
   PRIMARY KEY (`StudentId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 

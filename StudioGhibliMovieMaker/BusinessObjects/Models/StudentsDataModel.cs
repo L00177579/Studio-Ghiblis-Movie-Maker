@@ -12,6 +12,8 @@ namespace StudioGhibliMovieMaker.BusinessObjects.Models
         public string Email { get; set; }
 
         public string? Courses { get; set; }
+        [Display(Name = "Requests (Max 200 Characters)")]
+        public string NiceToHaveRequests { get; set; }
         
     }
 }
