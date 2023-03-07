@@ -1,9 +1,9 @@
 ﻿@if(User.Identity.IsAuthenticated)
 {
-	<form method="post" class="form-inline" asp-page="Logout">
-		Welcome @User.Identity.Name
-		<button type="submit" class="ml-2 btn btn-link">Logout</button>
-	</form>
+	<div>
+		Welcome @User.Identity.Name <a class="ml-2 btn btn-link" asp-area="" asp-page="/Logout">Logout</a>
+	</div>
+		
 }
 else
 {
