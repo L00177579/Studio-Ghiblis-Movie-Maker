@@ -18,7 +18,13 @@ builder.Services.AddAuthentication("SGMMCookie").AddCookie("SGMMCookie", options
 {
     options.Cookie.Name = "SGMMCookie";
     options.LoginPath = "/Login";
+    options.LogoutPath = "/Index";
     options.AccessDeniedPath = "/AccessDenied";
+});
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminOnly", policy => policy.RequireClaim("admin"));
 });
 
 var app = builder.Build();
