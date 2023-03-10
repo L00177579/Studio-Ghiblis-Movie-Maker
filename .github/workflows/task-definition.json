@@ -17,7 +17,7 @@
             "command": [],
             "environment": [
                 {
-                    "name": "ConnectionStrings__MariaDBConnectionString"
+                    "name": "ConnectionStrings__MariaDBConnectionString",
                     "value": "%MariaDBConnectionString%"
                 }
             ],
