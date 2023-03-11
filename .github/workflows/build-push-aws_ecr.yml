@@ -33,6 +33,12 @@ jobs:
     - name: Login to Amazon ECR
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
+      
+    - name: Add secrets to Task Definition
+      run: |
+        sed -i "s/%MariaDBConnectionString%/$MARIADBCS/g" ${{ env.ECS_TASK_DEFINITION }}
+      env:
+        MARIADBCS: ${{secrets.MARIADBCONNECTIONSTRING}}
 
     - name: Build, tag, and push image to Amazon ECR
       id: build-image
