@@ -27,6 +27,8 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("AdminOnly", policy => policy.RequireClaim("admin"));
 });
 
+builder.Configuration.AddEnvironmentVariables();
+
 var app = builder.Build();
 
 
