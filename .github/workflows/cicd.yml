@@ -9,14 +9,14 @@ on:
 jobs:
   development:
     environment: development
-    uses: .github/workflows/build-push-aws-ecr.yml
+    uses: build-push-aws-ecr.yml
     with:
       deploy_env: development
       ecs_env_cluster: pipeline
 
   production:
     environment: production
-    uses: .github/workflows/build-push-aws-ecr.yml
+    uses: build-push-aws-ecr.yml
     with:
       deploy_env: production
       ecs_env_cluster: pipeline
