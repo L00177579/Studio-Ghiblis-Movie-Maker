@@ -14,7 +14,7 @@ jobs:
       - name: Check out repo
         uses: actions/checkout@v3
       - name: Call build and deploy
-        uses: .github/workflows/build-push-aws-ecr.yml
+        uses: ./.github/workflows/build-push-aws-ecr.yml
         with:
           deploy_env: development
           ecs_env_cluster: pipeline
@@ -26,7 +26,7 @@ jobs:
       - name: Check out repo
         uses: actions/checkout@v3
       - name: Call build and deploy
-        uses: .github/workflows/build-push-aws-ecr.yml
+        uses: ./.github/workflows/build-push-aws-ecr.yml
         with:
           deploy_env: production
           ecs_env_cluster: pipeline
