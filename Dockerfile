@@ -6,6 +6,7 @@ EXPOSE 80
 EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+LABEL testing=true
 ARG SONAR_PROJECT
 ARG SONAR_ORG
 ARG SONAR_LOGIN

@@ -61,7 +61,7 @@ jobs:
         # Build a docker container and
         # push it to ECR so that it can
         # be deployed to ECS.
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG --build-arg SONAR_PROJECT=L00177579_Studio-Ghiblis-Movie-Maker --build-arg SONAR_ORG=l00177579 --build-arg SONAR_LOGIN=${{ secrets.sonar_login }} --build-arg SONAR_HOST_URL=https://sonarcloud.io -f ./Dockerfile .
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG --build-arg SONAR_PROJECT=L00177579_Studio-Ghiblis-Movie-Maker --build-arg SONAR_ORG=l00177579 --build-arg SONAR_LOGIN=${{ secrets.sonar_login }} --build-arg SONAR_HOST_URL=https://sonarcloud.io  --output -f ./Dockerfile .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
 
@@ -80,3 +80,18 @@ jobs:
         service: ${{ env.ECS_SERVICE }}
         cluster: ${{ inputs.ecs_env_cluster }}
         wait-for-service-stability: true
+
+    - name: Run container and grab test results
+      run: |
+        $id=docker images --filter "label=test=true" -q | Select-Object -First 1
+        docker create --name testcontainer $id
+        docker cp testcontainer:/src/coverage.xml ./coverage.xml
+
+    - name: Test Report
+      uses: dorny/test-reporter@v1
+      if: always()
+      with:
+        name: DotNET Tests
+        path: "**/coverage.xml"                            
+        reporter: dotnet-trx
+        fail-on-error: true

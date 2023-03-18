@@ -19,6 +19,7 @@ jobs:
       sonar_login: ${{ secrets.SONAR_TOKEN }}
 
   production:
+    needs: development
     uses: ./.github/workflows/build-push-aws_ecr.yml
     with:
       deploy_env: production
