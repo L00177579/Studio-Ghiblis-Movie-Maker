@@ -17,6 +17,10 @@ env:
   ECS_TASK_DEFINITION: .github/workflows/task-definition.json # set this to the path to your Amazon ECS task definition
   CONTAINER_NAME: build          # set this to the name of the container in the
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   deploy:
     name: Deploy
