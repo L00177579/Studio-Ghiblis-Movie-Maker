@@ -10,24 +10,18 @@ jobs:
   development:
     environment: development
     runs-on: ubuntu-latest
-    steps:
-      - name: Check out repo
-        uses: actions/checkout@v3
-      - name: Call build and deploy
-        uses: ./.github/workflows/build-push-aws_ecr.yml@main
-        with:
-          deploy_env: development
-          ecs_env_cluster: pipeline
+    uses: ./.github/workflows/build-push-aws_ecr.yml@main
+    with:
+      deploy_env: development
+      ecs_env_cluster: pipeline
 
   production:
     environment: production
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repo
-        uses: actions/checkout@v3
-      - name: Call build and deploy
-        uses: ./.github/workflows/build-push-aws_ecr.yml@main
-        with:
-          deploy_env: production
-          ecs_env_cluster: pipeline
+    - name: Call build and deploy
+      uses: ./.github/workflows/build-push-aws_ecr.yml@main
+      with:
+        deploy_env: production
+        ecs_env_cluster: pipeline
 
