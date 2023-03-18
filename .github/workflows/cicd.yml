@@ -18,10 +18,8 @@ jobs:
   production:
     environment: production
     runs-on: ubuntu-latest
-    steps:
-    - name: Call build and deploy
-      uses: ./.github/workflows/build-push-aws_ecr.yml
-      with:
-        deploy_env: production
-        ecs_env_cluster: pipeline
+    uses: ./.github/workflows/build-push-aws_ecr.yml
+    with:
+      deploy_env: production
+      ecs_env_cluster: pipeline
 
