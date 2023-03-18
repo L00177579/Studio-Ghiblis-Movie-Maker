@@ -8,16 +8,12 @@ on:
 
 jobs:
   development:
-    environment: development
-    runs-on: ubuntu-latest
     uses: ./.github/workflows/build-push-aws_ecr.yml
     with:
       deploy_env: development
       ecs_env_cluster: pipeline
 
   production:
-    environment: production
-    runs-on: ubuntu-latest
     uses: ./.github/workflows/build-push-aws_ecr.yml
     with:
       deploy_env: production
