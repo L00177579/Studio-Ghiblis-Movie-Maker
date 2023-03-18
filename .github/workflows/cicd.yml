@@ -8,6 +8,9 @@ on:
 
 jobs:
   development:
+    permissions:
+      id-token: write
+      contents: read
     uses: ./.github/workflows/build-push-aws_ecr.yml
     with:
       deploy_env: development
