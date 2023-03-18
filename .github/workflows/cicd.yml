@@ -10,7 +10,7 @@ jobs:
   development:
     environment: development
     runs-on: ubuntu-latest
-    uses: ./.github/workflows/build-push-aws_ecr.yml@main
+    uses: ./.github/workflows/build-push-aws_ecr.yml
     with:
       deploy_env: development
       ecs_env_cluster: pipeline
@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Call build and deploy
-      uses: ./.github/workflows/build-push-aws_ecr.yml@main
+      uses: ./.github/workflows/build-push-aws_ecr.yml
       with:
         deploy_env: production
         ecs_env_cluster: pipeline
