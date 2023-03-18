@@ -9,6 +9,7 @@ on:
 jobs:
   development:
     environment: development
+    runs-on: ubuntu-latest
     steps:
       - name: Check out repo
         uses: actions/checkout@v3
@@ -20,6 +21,7 @@ jobs:
 
   production:
     environment: production
+    runs-on: ubuntu-latest
     steps:
       - name: Check out repo
         uses: actions/checkout@v3
