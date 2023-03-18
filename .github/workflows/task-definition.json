@@ -19,6 +19,10 @@
                 {
                     "name": "ConnectionStrings__MariaDBConnectionString",
                     "value": "%MariaDBConnectionString%"
+                },
+                {
+                    "name": "ASPNETCORE_ENVIRONMENT",
+                    "value": "Development"
                 }
             ],
             "mountPoints": [],
