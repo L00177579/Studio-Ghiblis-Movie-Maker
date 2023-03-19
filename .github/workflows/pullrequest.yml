@@ -1,4 +1,4 @@
-name: SonarCloud
+name: PullRequest
 on:
   pull_request:
     types: [opened, synchronize, reopened]

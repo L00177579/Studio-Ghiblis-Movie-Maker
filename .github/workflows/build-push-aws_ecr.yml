@@ -86,6 +86,8 @@ jobs:
         export testingcontainerid=$(docker images --filter "label=testing=true" -q)
         echo $testingcontainerid
         docker create --name testingcontainer $testingcontainerid
+        docker exec testingcontainer ls
+        docker exec testingcontainer pwd
         docker cp testingcontainer:/src/TestResults/ ./
         docker stop testingcontainer
         docker rm testingcontainer
