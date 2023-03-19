@@ -89,6 +89,7 @@ jobs:
         docker cp testingcontainer:/src/coverage.xml ./coverage.xml
         docker stop testingcontainer
         docker rm testingcontainer
+        echo $(ls)
 
     - name: Test Report
       uses: dorny/test-reporter@v1
