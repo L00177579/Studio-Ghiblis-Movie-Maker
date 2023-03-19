@@ -12,7 +12,7 @@ jobs:
       deploy_env: development
       ecs_env_cluster: pipeline
       ecs_task_definition: .github/workflows/task-definition.json
-      ecs_service: build-ecs-production
+      ecs_service: build-ecs
       ecs_repository: repositoryecr
     secrets:
       aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
