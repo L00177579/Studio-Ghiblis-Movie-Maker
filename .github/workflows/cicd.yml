@@ -1,0 +1,29 @@
+on:
+  push:
+    branches:
+    - main
+    
+jobs:
+  development:
+    uses: ./.github/workflows/build-push-aws_ecr.yml
+    with:
+      deploy_env: development
+      ecs_env_cluster: pipeline
+    secrets:
+      aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      mariadbcs: ${{secrets.MARIADBCONNECTIONSTRING}}
+      sonar_login: ${{ secrets.SONAR_TOKEN }}
+
+  production:
+    needs: development
+    uses: ./.github/workflows/build-push-aws_ecr.yml
+    with:
+      deploy_env: production
+      ecs_env_cluster: pipeline
+    secrets:
+      aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      mariadbcs: ${{secrets.MARIADBCONNECTIONSTRING}}
+      sonar_login: ${{ secrets.SONAR_TOKEN }}
+

@@ -1,10 +1,8 @@
-name: SonarCloud
+name: PullRequest
 on:
-  push:
-    branches:
-      - main
   pull_request:
     types: [opened, synchronize, reopened]
+    
 jobs:
   build:
     name: Build and analyze
@@ -49,5 +47,15 @@ jobs:
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"L00177579_Studio-Ghiblis-Movie-Maker" /o:"l00177579" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
           dotnet build .\StudioGhibliMovieMaker.sln
-          dotnet-coverage collect 'dotnet test' -f xml  -o 'coverage.xml'
+          dotnet-coverage collect 'dotnet test --logger "trx;LogFileName=test-results.trx"' -f xml  -o 'coverage.xml'
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+
+      - name: Test Report
+        uses: dorny/test-reporter@v1
+        if: always()
+        with:
+          name: DotNET Tests
+          path: "**/test-results.trx"                            
+          reporter: dotnet-trx
+          fail-on-error: true
+
