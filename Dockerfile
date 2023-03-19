@@ -32,10 +32,8 @@ WORKDIR /src
 
 FROM build AS publish
 RUN dotnet publish "./StudioGhibliMovieMaker/StudioGhibliMovieMaker.csproj" -c Release -o /app/publish /p:UseAppHost=false
-RUN dotnet publish "./StudioGhibliMovieMaker.Tests/StudioGhibliMovieMaker.Tests.csproj" -c Release -o /app/publishtests /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-COPY --from=publish /app/publishtests ./tests
 ENTRYPOINT ["dotnet", "StudioGhibliMovieMaker.dll"]

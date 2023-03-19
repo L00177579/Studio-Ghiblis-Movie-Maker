@@ -84,6 +84,7 @@ jobs:
     - name: Run container and grab test results
       run: |
         export testingcontainerid=$(docker images --filter "label=testing=true" -q)
+        echo $testingcontainerid
         docker create --name testingcontainer $testingcontainerid
         docker cp testingcontainer:coverage.xml ./coverage.xml
         docker stop testingcontainer
