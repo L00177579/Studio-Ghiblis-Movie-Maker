@@ -86,7 +86,7 @@ jobs:
         export testingcontainerid=$(docker images --filter "label=testing=true" -q)
         echo $testingcontainerid
         docker create --name testingcontainer $testingcontainerid
-        docker cp testingcontainer:coverage.xml ./coverage.xml
+        docker cp testingcontainer:/src/coverage.xml ./coverage.xml
         docker stop testingcontainer
         docker rm testingcontainer
 
