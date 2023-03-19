@@ -2,6 +2,8 @@ on:
   push:
     branches:
     - main
+  pull_request:
+    types: [opened, synchronize, reopened]
     
 jobs:
   development:
@@ -9,6 +11,9 @@ jobs:
     with:
       deploy_env: development
       ecs_env_cluster: pipeline
+      ecs_task_definition: .github/workflows/task-definition.json
+      ecs_service: build-ecs-production
+      ecs_repository: repositoryecr
     secrets:
       aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
       aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -20,10 +25,12 @@ jobs:
     uses: ./.github/workflows/build-push-aws_ecr.yml
     with:
       deploy_env: production
-      ecs_env_cluster: pipeline
+      ecs_env_cluster: pipeline_production
+      ecs_task_definition: .github/workflows/task-definition-production.json
+      ecs_service: build-ecs-production
+      ecs_repository: repositoryecr_production
     secrets:
       aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
       aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       mariadbcs: ${{secrets.MARIADBCONNECTIONSTRING}}
       sonar_login: ${{ secrets.SONAR_TOKEN }}
-
