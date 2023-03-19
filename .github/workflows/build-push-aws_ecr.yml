@@ -86,16 +86,15 @@ jobs:
         export testingcontainerid=$(docker images --filter "label=testing=true" -q)
         echo $testingcontainerid
         docker create --name testingcontainer $testingcontainerid
-        docker cp testingcontainer:/src/coverage.xml ./coverage.xml
+        docker cp testingcontainer:/src/TestResults/ ./
         docker stop testingcontainer
         docker rm testingcontainer
-        echo $(ls)
 
     - name: Test Report
       uses: dorny/test-reporter@v1
       if: always()
       with:
         name: DotNET Tests
-        path: "**/coverage.xml"                            
+        path: "**/test-results.trx"                            
         reporter: dotnet-trx
         fail-on-error: true

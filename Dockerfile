@@ -24,7 +24,7 @@ COPY . .
 RUN dotnet restore "StudioGhibliMovieMaker.sln"
 WORKDIR "/src/."
 RUN dotnet build "StudioGhibliMovieMaker.sln" -c Release -o /app/build
-RUN dotnet-coverage collect 'dotnet test' -f xml -o 'coverage.xml'
+RUN dotnet-coverage collect 'dotnet test --logger "trx;LogFileName=test-results.trx"' -f xml -o 'coverage.xml'
 RUN dotnet sonarscanner end /d:sonar.login="$SONAR_LOGIN"
 
 FROM build as testing
